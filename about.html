@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Highland Cow Signs Co. — our story, values, trade programme and how to get in touch.">
+  <title>About Us | Highland Cow Signs Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--s4); margin-top:var(--s7); }
+    .stat-card { text-align:center; padding:var(--s6) var(--s4); background:rgba(255,255,255,.08); border-radius:var(--r2); border:1px solid rgba(255,255,255,.1); }
+    .stat-num  { font-family:var(--serif); font-size:2.4rem; font-weight:700; color:var(--amber-lt); display:block; line-height:1; }
+    .stat-label{ font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(235,224,200,.6); margin-top:6px; display:block; }
+    .faq-item  { border-bottom:1px solid var(--border-lt); }
+    .faq-btn   { width:100%; display:flex; justify-content:space-between; align-items:center; padding:var(--s4) 0; background:none; border:none; cursor:pointer; font-family:var(--sans); font-size:.95rem; font-weight:600; color:var(--peat); text-align:left; }
+    .faq-icon  { width:20px; height:20px; flex-shrink:0; transition:transform .25s; }
+    .faq-btn.open .faq-icon { transform:rotate(180deg); }
+    .faq-body  { font-size:.9rem; color:var(--bark-lt); line-height:1.8; max-height:0; overflow:hidden; transition:max-height .3s, padding-bottom .3s; }
+    .faq-body.open { max-height:240px; padding-bottom:var(--s4); }
+    @media(max-width:768px){ .stat-grid{ grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    🏴󠁧󠁢󠁳󠁣󠁴󠁿 Free UK delivery on orders over £35 &nbsp;·&nbsp; <a href="personalised.html">Personalised signs from £19.99</a>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <div class="logo-mark">
+          <svg viewBox="0 0 28 28" fill="none">
+            <ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/>
+            <ellipse cx="9"  cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="14" cy="16" rx="5"   ry="4"   fill="#EBE0C8"/>
+            <path d="M10 11 Q11 8 12 9 Q13 6 14 9 Q15 7 16 9 Q17 8 18 11" stroke="#C8B490" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/>
+            <circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/>
+            <ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/>
+            <path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Highland Cow Signs Co.</span>
+          <span class="logo-tagline">Scottish Signs &amp; Gifts</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="primary-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html">Shop</a></li>
+          <li><a href="personalised.html">Personalised</a></li>
+          <li><a href="about.html#trade">Trade</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="collections.html">Shop All</a>
+      <a href="personalised.html">Personalised Signs</a>
+      <a href="about.html#trade">Trade Accounts</a>
+      <a href="about.html">About &amp; Contact</a>
+    </nav>
+  </div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button class="icon-btn cart-close" onclick="closeDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div id="cart-footer"></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <!-- 📸 PHOTO SLOT 9: Highland Cow in misty landscape (herd/wide shot) -->
+    <div class="page-hero-bg" style="background-image:url('https://picsum.photos/seed/highland-herd-misty/1400/500');"></div>
+    <div class="container">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span style="color:rgba(235,224,200,.8)">About Us</span></nav>
+      <h1>Built on a Love of Scotland</h1>
+      <p>The story behind Highland Cow Signs Co. — and why we do what we do.</p>
+    </div>
+  </div>
+
+  <!-- OUR STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="story-section" data-reveal>
+        <!-- 📸 PHOTO SLOT 10: Rustic workshop / someone working on a sign -->
+        <img src="https://picsum.photos/seed/rustic-workshop-crafts/700/525" alt="Our workshop — handcrafting Highland Cow signs" loading="lazy">
+        <div>
+          <span class="eyebrow">Our Story</span>
+          <h2>Started in a Shed. Grown with Heart.</h2>
+          <p>Highland Cow Signs Co. started exactly the way you'd hope a Scottish gifts brand would — in a draughty workshop, fuelled by strong tea and a genuine love of those magnificent, fluffy-fringed Highland Cows.</p>
+          <p>We wanted to make signs and gifts that felt properly Scottish. Not mass-produced trinkets, but pieces with character — made on quality materials, with designs that make people smile and interiors that feel like home.</p>
+          <p>Every sign we make still gets the same attention it did on day one. We proof every personalised order, hand-check every print, and pack every box ourselves. That won't change.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <section style="background:var(--forest); padding:var(--s8) 0;">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat-card" data-reveal>
+          <span class="stat-num">1,200+</span>
+          <span class="stat-label">Five-Star Reviews</span>
+        </div>
+        <div class="stat-card" data-reveal data-reveal-delay="1">
+          <span class="stat-num">80+</span>
+          <span class="stat-label">Trade Stockists</span>
+        </div>
+        <div class="stat-card" data-reveal data-reveal-delay="2">
+          <span class="stat-num">200+</span>
+          <span class="stat-label">Designs in Stock</span>
+        </div>
+        <div class="stat-card" data-reveal data-reveal-delay="3">
+          <span class="stat-num">3–5</span>
+          <span class="stat-label">Day Despatch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section" style="background:var(--parchment);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">What We Stand For</span>
+        <h2>Our Values</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card" data-reveal>
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-.45 3.11"/></svg>
+          </div>
+          <h4>Quality First</h4>
+          <p>We only use materials we'd be happy hanging in our own homes. No shortcuts — ever.</p>
+        </div>
+        <div class="value-card" data-reveal data-reveal-delay="1">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+          </div>
+          <h4>Made with Love</h4>
+          <p>Every sign is made by people who genuinely care — from first design to final packaging.</p>
+        </div>
+        <div class="value-card" data-reveal data-reveal-delay="2">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.279-2.132z"/></svg>
+          </div>
+          <h4>Truly Scottish</h4>
+          <p>Our designs celebrate real Scottish culture — not just a shortbread-tin version of it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRADE SECTION -->
+  <section class="section" id="trade" style="background:var(--oat);">
+    <div class="container">
+      <div class="grid-2" style="align-items:center; gap:var(--s8);">
+        <div data-reveal>
+          <span class="eyebrow">Trade &amp; Wholesale</span>
+          <h2>Stock the Signs Your Customers Already Love</h2>
+          <p style="color:var(--bark-lt); margin-bottom:var(--s4); line-height:1.8;">We supply over 80 independent retailers across the UK — from gift shops on the Royal Mile to farm shops in the Yorkshire Dales. Our Highland Cow range is a proven bestseller, and we make it easy to stock and restock.</p>
+          <ul class="trade-list" style="--green:var(--forest);">
+            <li>50% trade discount off RRP on all lines</li>
+            <li>Minimum opening order £100 · subsequent orders £50</li>
+            <li>Full catalogue, high-res images and POS stands supplied</li>
+            <li>Net 30 payment terms available for established accounts</li>
+            <li>Dedicated account manager · fast 3–5 day despatch</li>
+            <li>Sale-or-return available for new stockists on request</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary btn-lg" style="margin-top:var(--s5);">Apply for a Trade Account</a>
+        </div>
+        <div data-reveal data-reveal-delay="2">
+          <!-- 📸 PHOTO SLOT 11: Signs displayed in a shop/retail setting -->
+          <img src="https://picsum.photos/seed/retail-gift-shop-display/700/525"
+               alt="Highland Cow Signs displayed in a retail gift shop"
+               style="width:100%;border-radius:var(--r2);box-shadow:var(--sh-lg);" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section" id="faqs" style="background:var(--parchment);">
+    <div class="container" style="max-width:720px;">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Got Questions?</span>
+        <h2>Frequently Asked</h2>
+        <div class="rule"></div>
+      </div>
+      <div id="delivery" style="margin-bottom:var(--s2);">
+        <div class="faq-item">
+          <button class="faq-btn">
+            How long does delivery take?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="faq-body">Standard UK delivery is 3–5 working days at £3.99, or free on orders over £35. Express next-day delivery is available at checkout. We despatch Monday to Friday — orders placed before 2pm are usually shipped same day.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            How do I hang the signs?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="faq-body">All metal signs come pre-drilled with a single hole at the top for easy hanging with a nail or picture hook. Wooden signs come strung with natural jute twine, ready to hang immediately. No tools required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            Can I return or exchange a sign?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="faq-body">We offer 30-day returns on all non-personalised items. Simply get in touch and we'll arrange a return. Personalised signs cannot be returned unless they arrive damaged or faulty — which is why we send a digital proof before printing.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            How do personalised signs work?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="faq-body">Use our sign builder to enter your text, choose your style and size, then add to your bag. Once we receive your order we'll email you a digital proof within 24 hours. Once you approve it, we print and despatch within 2–3 working days.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            Are the signs suitable for outdoors?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="faq-body">Our standard range is designed for indoor use. The print and finish can be affected by prolonged outdoor exposure and moisture. We do offer a weatherproofed outdoor range — contact us for details.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">
+            Do you offer wholesale / trade pricing?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="faq-body">Yes — we supply over 80 UK retailers. Trade accounts receive 50% off RRP, with a minimum opening order of £100. Use the contact form below and mention you're a trade enquiry, and we'll get back to you within one working day.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="background:var(--oat);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Get in Touch</span>
+        <h2>We'd Love to Hear from You</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-form" data-reveal>
+          <h3 style="margin-bottom:var(--s5);">Send a Message</h3>
+          <form id="contact-form">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Fraser Ballantyne" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.co.uk" required>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select>
+                <option>General Enquiry</option>
+                <option>Order Query</option>
+                <option>Personalised Sign</option>
+                <option>Trade / Wholesale</option>
+                <option>Returns &amp; Refunds</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Tell us how we can help…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info" data-reveal data-reveal-delay="1">
+          <h3>Other Ways to Reach Us</h3>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <div><strong>Email</strong><span>hello@highlandcowsigns.co.uk</span></div>
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <div><strong>Phone</strong><span>01XXX XXXXXX<br><small>Mon–Fri, 9am–5pm</small></span></div>
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div><strong>Response Time</strong><span>We aim to reply within one working day.</span></div>
+          </div>
+          <div style="margin-top:var(--s6); padding:var(--s5); background:var(--parchment); border-radius:var(--r2); border:1px solid var(--border-lt);">
+            <div style="font-weight:700; margin-bottom:var(--s2);">Trade Enquiries</div>
+            <p style="font-size:.88rem; color:var(--bark-lt); margin:0; line-height:1.7;">Interested in stocking our range? Select <em>Trade / Wholesale</em> in the subject above and tell us about your shop — we'll come back to you with our full trade pack.</p>
+          </div>
+          <div style="margin-top:var(--s5);">
+            <div style="font-weight:700; margin-bottom:var(--s3);">Follow Along</div>
+            <div style="display:flex; gap:12px;">
+              <a href="#" style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--bark-lt);padding:8px 14px;border:1px solid var(--border);border-radius:var(--r2);transition:all .2s;" onmouseover="this.style.borderColor='var(--rust)';this.style.color='var(--rust)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--bark-lt)'">📸 Instagram</a>
+              <a href="#" style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--bark-lt);padding:8px 14px;border:1px solid var(--border);border-radius:var(--r2);transition:all .2s;" onmouseover="this.style.borderColor='var(--rust)';this.style.color='var(--rust)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--bark-lt)'">🎵 TikTok</a>
+              <a href="#" style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--bark-lt);padding:8px 14px;border:1px solid var(--border);border-radius:var(--r2);transition:all .2s;" onmouseover="this.style.borderColor='var(--rust)';this.style.color='var(--rust)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--bark-lt)'">📌 Pinterest</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="newsletter">
+    <div class="container">
+      <div class="newsletter-text"><h3>Get Highland News</h3><p>New collections and exclusive offers to your inbox.</p></div>
+      <form class="newsletter-form"><input type="email" placeholder="your@email.co.uk" required><button type="submit" class="btn btn-dark">Subscribe</button></form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <div class="logo-mark"><svg viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/><ellipse cx="9" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/><circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/><ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/><path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
+            <div class="logo-text"><span class="logo-name">Highland Cow Signs Co.</span><span class="logo-tagline">Scottish Signs &amp; Gifts</span></div>
+          </a>
+          <p>Scottish-designed decorative signs and gifts, handcrafted for homes that tell a story.</p>
+          <div class="footer-social"><a href="#">📸</a><a href="#">👥</a><a href="#">📌</a><a href="#">🎵</a></div>
+        </div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">All Products</a></li><li><a href="personalised.html">Personalised Signs</a></li><li><a href="#trade">Trade Accounts</a></li></ul></div>
+        <div class="footer-col"><h4>Help</h4><ul><li><a href="#faqs">FAQs</a></li><li><a href="#delivery">Delivery &amp; Returns</a></li><li><a href="#contact">Contact Us</a></li></ul></div>
+        <div class="footer-col"><h4>Get in Touch</h4><div class="footer-contact"><strong>Email</strong> hello@highlandcowsigns.co.uk<br><br><strong>Phone</strong> 01XXX XXXXXX<br><br><strong>Hours</strong> Mon–Fri, 9am–5pm</div></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Highland Cow Signs Co. All rights reserved.</span><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // FAQ accordion (reusing the same pattern as product accordion)
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const open = btn.classList.toggle('open');
+        body.classList.toggle('open', open);
+      });
+    });
+  </script>
+</body>
+</html>

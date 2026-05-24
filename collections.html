@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse the full Highland Cow Signs Co. collection — metal wall signs, wooden signs, personalised gifts, mugs, coasters and more.">
+  <title>Shop All | Highland Cow Signs Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Collections-page extras */
+    .active-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+    .filter-tag {
+      display:inline-flex; align-items:center; gap:6px;
+      background:var(--parchment); border:1px solid var(--border);
+      border-radius:999px; padding:4px 12px;
+      font-size:.76rem; font-weight:600; color:var(--bark-lt);
+    }
+    .filter-tag button { background:none; border:none; cursor:pointer; color:var(--stone); font-size:1rem; line-height:1; padding:0; }
+    .filter-tag button:hover { color:var(--rust); }
+    .mobile-filter-bar {
+      display:none;
+      align-items:center; justify-content:space-between;
+      padding:12px 0; border-bottom:1px solid var(--border-lt);
+      margin-bottom:20px;
+    }
+    @media(max-width:1024px){ .mobile-filter-bar{ display:flex; } }
+    .no-results { text-align:center; padding:60px 0; color:var(--stone); }
+    .collection-hero-strip {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:3px;
+      height:200px; overflow:hidden;
+    }
+    .collection-hero-strip img { width:100%; height:100%; object-fit:cover; }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    🏴󠁧󠁢󠁳󠁣󠁴󠁿 Free UK delivery on orders over £35 &nbsp;·&nbsp;
+    <a href="personalised.html">Personalised signs from £19.99</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <div class="logo-mark">
+          <svg viewBox="0 0 28 28" fill="none">
+            <ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/>
+            <ellipse cx="9"  cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="14" cy="16" rx="5"   ry="4"   fill="#EBE0C8"/>
+            <path d="M10 11 Q11 8 12 9 Q13 6 14 9 Q15 7 16 9 Q17 8 18 11" stroke="#C8B490" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/>
+            <circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/>
+            <ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/>
+            <path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Highland Cow Signs Co.</span>
+          <span class="logo-tagline">Scottish Signs &amp; Gifts</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="primary-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html" class="active">Shop</a></li>
+          <li><a href="personalised.html">Personalised</a></li>
+          <li><a href="about.html#trade">Trade</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="collections.html">Shop All</a>
+      <a href="personalised.html">Personalised Signs</a>
+      <a href="about.html#trade">Trade Accounts</a>
+      <a href="about.html">About &amp; Contact</a>
+    </nav>
+    <div class="mobile-menu-footer"><p>hello@highlandcowsigns.co.uk</p></div>
+  </div>
+
+  <!-- CART -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button class="icon-btn cart-close" onclick="closeDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div id="cart-footer"></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://picsum.photos/seed/highland-misty-wide/1400/400');"></div>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(235,224,200,.8)">Shop All</span>
+      </nav>
+      <h1>The Full Collection</h1>
+      <p>Metal signs, wooden signs, personalised gifts and more — all with that unmistakeable Highland soul.</p>
+    </div>
+  </div>
+
+  <!-- IMAGE STRIP -->
+  <div class="collection-hero-strip">
+    <img src="https://picsum.photos/seed/highland-cow-close-1/400/200" alt="Highland Cow close-up" loading="lazy">
+    <img src="https://picsum.photos/seed/metal-sign-wall/400/200"      alt="Metal sign on stone wall" loading="lazy">
+    <img src="https://picsum.photos/seed/highland-cow-glen/400/200"    alt="Highland Cow in glen" loading="lazy">
+    <img src="https://picsum.photos/seed/rustic-wood-texture/400/200"  alt="Rustic wooden sign" loading="lazy">
+  </div>
+
+  <!-- SHOP LAYOUT -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Mobile filter bar -->
+      <div class="mobile-filter-bar">
+        <button id="filter-toggle" class="btn btn-ghost btn-sm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/></svg>
+          Filter &amp; Sort
+        </button>
+        <span class="shop-count" id="product-count">16 products</span>
+      </div>
+
+      <div class="shop-layout">
+
+        <!-- SIDEBAR FILTERS -->
+        <aside class="filter-sidebar">
+          <div class="filter-group">
+            <h4>Category</h4>
+            <label class="filter-option"><input type="checkbox" data-cat="metal"> Metal Wall Signs</label>
+            <label class="filter-option"><input type="checkbox" data-cat="wood">  Wooden Signs</label>
+            <label class="filter-option"><input type="checkbox" data-cat="personalised"> Personalised</label>
+            <label class="filter-option"><input type="checkbox" data-cat="mugs">  Mugs &amp; Coasters</label>
+            <label class="filter-option"><input type="checkbox" data-cat="magnets"> Fridge Magnets</label>
+            <label class="filter-option"><input type="checkbox" data-cat="gifts"> Gift Sets</label>
+          </div>
+          <div class="filter-group">
+            <h4>Price</h4>
+            <label class="filter-option"><input type="checkbox" data-cat="under-15"> Under £15</label>
+            <label class="filter-option"><input type="checkbox" data-cat="15-25"> £15 – £25</label>
+            <label class="filter-option"><input type="checkbox" data-cat="over-25"> Over £25</label>
+          </div>
+          <div class="filter-group">
+            <h4>Theme</h4>
+            <label class="filter-option"><input type="checkbox" data-cat="highlands"> The Highlands</label>
+            <label class="filter-option"><input type="checkbox" data-cat="wee-dram"> Wee Dram Bar</label>
+            <label class="filter-option"><input type="checkbox" data-cat="home"> House &amp; Home</label>
+            <label class="filter-option"><input type="checkbox" data-cat="occasions"> Occasions</label>
+          </div>
+        </aside>
+
+        <!-- PRODUCT GRID -->
+        <div>
+          <div class="shop-toolbar">
+            <span class="shop-count" id="product-count-desktop">16 products</span>
+            <select class="sort-select" id="sort-select">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </div>
+
+          <div class="grid-4" id="products-grid">
+
+            <!-- 1 -->
+            <div class="product-card" data-product-id="hcs-001" data-name="Highland Cow A4 Metal Sign" data-price="14.99" data-category="metal" data-order="1">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-01/500/500" alt="Highland Cow A4 Metal Sign" loading="lazy">
+                <span class="product-badge">Bestseller</span>
+                <button class="product-card-quick" data-add-cart="hcs-001" data-name="Highland Cow A4 Metal Sign" data-price="14.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4><a href="product.html" style="color:inherit;">Highland Cow A4 Metal Sign</a></h4>
+                <div class="product-stars">★★★★★ <span>(148)</span></div>
+                <div class="product-price">£14.99</div>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="product-card" data-product-id="hcs-002" data-name="Braw Wee Home Wooden Sign" data-price="22.99" data-category="wood" data-order="2">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-02/500/500" alt="Braw Wee Home Wooden Sign" loading="lazy">
+                <span class="product-badge new">New</span>
+                <button class="product-card-quick" data-add-cart="hcs-002" data-name="Braw Wee Home Wooden Sign" data-price="22.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Braw Wee Home Wooden Sign</h4>
+                <div class="product-stars">★★★★★ <span>(93)</span></div>
+                <div class="product-price">£22.99</div>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="product-card" data-product-id="hcs-003" data-name="Personalised Welcome Sign" data-price="24.99" data-category="personalised" data-order="3">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-03/500/500" alt="Personalised Welcome Sign" loading="lazy">
+                <span class="product-badge custom">Personalised</span>
+                <button class="product-card-quick" data-add-cart="hcs-003" data-name="Personalised Welcome Sign" data-price="24.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4><a href="personalised.html" style="color:inherit;">Personalised Welcome Sign</a></h4>
+                <div class="product-stars">★★★★★ <span>(212)</span></div>
+                <div class="product-price">£24.99</div>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="product-card" data-product-id="hcs-004" data-name="Highland Gift Set" data-price="34.99" data-category="gifts" data-order="4">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-04/500/500" alt="Highland Cow Gift Set" loading="lazy">
+                <span class="product-badge">Gift Set</span>
+                <button class="product-card-quick" data-add-cart="hcs-004" data-name="Highland Gift Set" data-price="34.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Highland Cow Gift Set — Sign, Mug &amp; Coasters</h4>
+                <div class="product-stars">★★★★★ <span>(67)</span></div>
+                <div class="product-price">£34.99</div>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="product-card" data-product-id="hcs-005" data-name="Wee Dram Bar Metal Sign" data-price="14.99" data-category="metal" data-order="5">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-05/500/500" alt="Wee Dram Bar Metal Sign" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-005" data-name="Wee Dram Bar Metal Sign" data-price="14.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Wee Dram Bar Metal Sign</h4>
+                <div class="product-stars">★★★★☆ <span>(54)</span></div>
+                <div class="product-price">£14.99</div>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="product-card" data-product-id="hcs-006" data-name="Highland Cow Mug" data-price="12.99" data-category="mugs" data-order="6">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-06/500/500" alt="Highland Cow Ceramic Mug" loading="lazy">
+                <span class="product-badge new">New</span>
+                <button class="product-card-quick" data-add-cart="hcs-006" data-name="Highland Cow Mug" data-price="12.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Highland Cow Ceramic Mug</h4>
+                <div class="product-stars">★★★★★ <span>(38)</span></div>
+                <div class="product-price">£12.99</div>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="product-card" data-product-id="hcs-007" data-name="Och Aye A3 Metal Sign" data-price="18.99" data-category="metal" data-order="7">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-07/500/500" alt="Och Aye the Noo Metal Sign" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-007" data-name="Och Aye A3 Metal Sign" data-price="18.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>'Och Aye the Noo' A3 Metal Sign</h4>
+                <div class="product-stars">★★★★★ <span>(79)</span></div>
+                <div class="product-price">£18.99</div>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="product-card" data-product-id="hcs-008" data-name="Highland Cow Fridge Magnets Set" data-price="8.99" data-category="magnets" data-order="8">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-08/500/500" alt="Highland Cow Fridge Magnets Set of 4" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-008" data-name="Highland Cow Fridge Magnets Set" data-price="8.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Highland Cow Fridge Magnets — Set of 4</h4>
+                <div class="product-stars">★★★★★ <span>(101)</span></div>
+                <div class="product-price">£8.99</div>
+              </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="product-card" data-product-id="hcs-009" data-name="Personalised Family Name Sign" data-price="29.99" data-category="personalised" data-order="9">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-09/500/500" alt="Personalised Family Name Metal Sign" loading="lazy">
+                <span class="product-badge custom">Personalised</span>
+                <button class="product-card-quick" data-add-cart="hcs-009" data-name="Personalised Family Name Sign" data-price="29.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4><a href="personalised.html" style="color:inherit;">Personalised Family Name Sign</a></h4>
+                <div class="product-stars">★★★★★ <span>(156)</span></div>
+                <div class="product-price">£29.99</div>
+              </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="product-card" data-product-id="hcs-010" data-name="Coaster Set of 4" data-price="16.99" data-category="mugs" data-order="10">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-10/500/500" alt="Highland Cow Coasters Set of 4" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-010" data-name="Coaster Set of 4" data-price="16.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Highland Cow Coasters — Set of 4</h4>
+                <div class="product-stars">★★★★★ <span>(44)</span></div>
+                <div class="product-price">£16.99</div>
+              </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="product-card" data-product-id="hcs-011" data-name="Haste Ye Back Wooden Sign" data-price="19.99" data-category="wood" data-order="11">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-11/500/500" alt="Haste Ye Back Wooden Sign" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-011" data-name="Haste Ye Back Wooden Sign" data-price="19.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>'Haste Ye Back' Wooden Hanging Sign</h4>
+                <div class="product-stars">★★★★☆ <span>(29)</span></div>
+                <div class="product-price">£19.99</div>
+              </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="product-card" data-product-id="hcs-012" data-name="Christmas Highland Cow Sign" data-price="12.99" data-category="metal" data-order="12">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-12/500/500" alt="Christmas Highland Cow Metal Sign" loading="lazy">
+                <span class="product-badge" style="background:var(--forest);">Seasonal</span>
+                <button class="product-card-quick" data-add-cart="hcs-012" data-name="Christmas Highland Cow Sign" data-price="12.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Christmas Highland Cow Metal Sign</h4>
+                <div class="product-stars">★★★★★ <span>(83)</span></div>
+                <div class="product-price">£12.99</div>
+              </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="product-card" data-product-id="hcs-013" data-name="Nae Bother Metal Sign" data-price="11.99" data-category="metal" data-order="13">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-13/500/500" alt="Nae Bother A5 Metal Sign" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-013" data-name="Nae Bother Metal Sign" data-price="11.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>'Nae Bother' A5 Metal Sign</h4>
+                <div class="product-stars">★★★★★ <span>(61)</span></div>
+                <div class="product-price">£11.99</div>
+              </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="product-card" data-product-id="hcs-014" data-name="Luxury Gift Box" data-price="44.99" data-category="gifts" data-order="14">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-14/500/500" alt="Highland Cow Luxury Gift Box" loading="lazy">
+                <span class="product-badge">Gift Set</span>
+                <button class="product-card-quick" data-add-cart="hcs-014" data-name="Luxury Gift Box" data-price="44.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Highland Cow Luxury Gift Box — 5 Items</h4>
+                <div class="product-stars">★★★★★ <span>(22)</span></div>
+                <div class="product-price">£44.99</div>
+              </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="product-card" data-product-id="hcs-015" data-name="Heather & Haggis Bar Sign" data-price="16.99" data-category="metal" data-order="15">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-15/500/500" alt="Heather & Haggis Bar Metal Sign" loading="lazy">
+                <button class="product-card-quick" data-add-cart="hcs-015" data-name="Heather & Haggis Bar Sign" data-price="16.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4>Heather &amp; Haggis Bar Metal Sign</h4>
+                <div class="product-stars">★★★★☆ <span>(17)</span></div>
+                <div class="product-price">£16.99</div>
+              </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="product-card" data-product-id="hcs-016" data-name="Personalised Pub Sign" data-price="32.99" data-category="personalised" data-order="16">
+              <div class="product-card-img">
+                <img src="https://picsum.photos/seed/hc-product-16/500/500" alt="Personalised Home Pub Sign" loading="lazy">
+                <span class="product-badge custom">Personalised</span>
+                <button class="product-card-quick" data-add-cart="hcs-016" data-name="Personalised Pub Sign" data-price="32.99">Add to Bag</button>
+              </div>
+              <div class="product-card-body">
+                <h4><a href="personalised.html" style="color:inherit;">Personalised Home Pub Sign</a></h4>
+                <div class="product-stars">★★★★★ <span>(48)</span></div>
+                <div class="product-price">£32.99</div>
+              </div>
+            </div>
+
+          </div><!-- /products-grid -->
+
+          <div class="no-results" id="no-results" style="display:none;">
+            <p>No products match your filters. <button onclick="document.querySelectorAll('.filter-option input').forEach(c=>c.checked=false); document.getElementById('sort-select').value='featured';" class="btn btn-ghost btn-sm" style="margin-left:8px;">Clear filters</button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <div class="container">
+      <div class="newsletter-text">
+        <h3>Get Highland News</h3>
+        <p>New collections, offers and behind-the-scenes — straight to your inbox.</p>
+      </div>
+      <form class="newsletter-form">
+        <input type="email" placeholder="your@email.co.uk" required>
+        <button type="submit" class="btn btn-dark">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <div class="logo-mark"><svg viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/><ellipse cx="9" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/><circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/><ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/><path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
+            <div class="logo-text"><span class="logo-name">Highland Cow Signs Co.</span><span class="logo-tagline">Scottish Signs &amp; Gifts</span></div>
+          </a>
+          <p>Scottish-designed decorative signs and gifts, handcrafted for homes that tell a story.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Facebook">👥</a>
+            <a href="#" aria-label="Pinterest">📌</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">All Products</a></li><li><a href="personalised.html">Personalised Signs</a></li><li><a href="about.html#trade">Trade Accounts</a></li></ul></div>
+        <div class="footer-col"><h4>Help</h4><ul><li><a href="about.html#faqs">FAQs</a></li><li><a href="about.html#delivery">Delivery &amp; Returns</a></li><li><a href="about.html#contact">Contact Us</a></li></ul></div>
+        <div class="footer-col"><h4>Get in Touch</h4><div class="footer-contact"><strong>Email</strong> hello@highlandcowsigns.co.uk<br><br><strong>Phone</strong> 01XXX XXXXXX</div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Highland Cow Signs Co.</span>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

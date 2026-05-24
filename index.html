@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Highland Cow Signs Co. — Scottish-made decorative metal and wooden signs, personalised gifts and rustic homeware. Shop the collection.">
+  <title>Highland Cow Signs Co. | Rustic Scottish Signs & Gifts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    🏴󠁧󠁢󠁳󠁣󠁴󠁿 Free UK delivery on orders over £35 &nbsp;·&nbsp;
+    <a href="personalised.html">Personalised signs from £19.99</a> &nbsp;·&nbsp;
+    Trade accounts welcome
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <div class="logo-mark">
+          <!-- SVG Highland Cow Icon -->
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/>
+            <ellipse cx="9"  cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="14" cy="16" rx="5"   ry="4"   fill="#EBE0C8"/>
+            <!-- Fringe -->
+            <path d="M10 11 Q11 8 12 9 Q13 6 14 9 Q15 7 16 9 Q17 8 18 11" stroke="#C8B490" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <!-- Eyes -->
+            <circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/>
+            <circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/>
+            <!-- Nose -->
+            <ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/>
+            <!-- Horns -->
+            <path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Highland Cow Signs Co.</span>
+          <span class="logo-tagline">Scottish Signs & Gifts</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="primary-nav">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="collections.html">Shop</a></li>
+          <li><a href="personalised.html">Personalised</a></li>
+          <li><a href="about.html#trade">Trade</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Shopping bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="collections.html">Shop All</a>
+      <a href="personalised.html">Personalised Signs</a>
+      <a href="about.html#trade">Trade Accounts</a>
+      <a href="about.html">About & Contact</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <p>📞 01XXX XXXXXX</p>
+      <p>hello@highlandcowsigns.co.uk</p>
+    </div>
+  </div>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button class="icon-btn cart-close" onclick="closeDrawer()" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div id="cart-footer"></div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image: url('https://picsum.photos/seed/glen-mist-morning/1600/800');"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">Handcrafted in Scotland</span>
+        <h1>Signs as Rugged as<br><em>the Highlands Themselves</em></h1>
+        <p>Metal &amp; wooden wall art celebrating the Highland Cow and the wild beauty of Scotland — made for homes, gifts, and stories worth telling.</p>
+        <div class="hero-btns">
+          <a href="collections.html" class="btn btn-primary btn-lg">Shop the Collection</a>
+          <a href="personalised.html" class="btn btn-outline btn-lg">Personalise a Sign</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-.45 3.11c-.37.562-.888.998-1.48 1.23a3.745 3.745 0 01-3.068 1.593 3.746 3.746 0 01-3.11-.45 3.745 3.745 0 01-1.23-1.48 3.745 3.745 0 01-3.068-1.593 3.746 3.746 0 01-.45-3.11 3.745 3.745 0 01-1.23-1.48A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 01.45-3.11 3.745 3.745 0 011.48-1.23 3.746 3.746 0 013.068-1.593 3.746 3.746 0 013.11.45 3.745 3.745 0 011.23 1.48 3.745 3.745 0 013.068 1.593A3.745 3.745 0 0121 12z"/></svg>
+        Scottish Designed
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+        Free UK P&amp;P Over £35
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+        1,200+ Five&#8209;Star Reviews
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125"/></svg>
+        Personalisation Available
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FEATURED COLLECTIONS ═══ -->
+  <section class="section" style="background: var(--parchment);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Our Collections</span>
+        <h2>Made for the Wild at Heart</h2>
+        <p>Three years of designs distilled into collections you'll want on every wall.</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="collections-featured" data-reveal data-reveal-delay="1">
+        <a href="collections.html?cat=highlands" class="collection-card">
+          <img src="https://picsum.photos/seed/highland-glen-loch/700/1000" alt="The Highlands collection — misty glen with Highland Cows" loading="lazy">
+          <div class="collection-card-overlay"></div>
+          <div class="collection-card-body">
+            <span class="eyebrow" style="color:var(--amber-lt);">50 Products</span>
+            <h3>The Highlands</h3>
+            <p>Glens, lochs, heather and the iconic Highland Cow — Scotland's most beloved landscapes on your walls.</p>
+            <span class="btn btn-primary btn-sm">Explore →</span>
+          </div>
+        </a>
+        <a href="collections.html?cat=wee-dram" class="collection-card">
+          <img src="https://picsum.photos/seed/rustic-whisky-bar/600/400" alt="Wee Dram Bar collection" loading="lazy">
+          <div class="collection-card-overlay"></div>
+          <div class="collection-card-body">
+            <span class="eyebrow" style="color:var(--amber-lt);">32 Products</span>
+            <h3>Wee Dram Bar</h3>
+            <p>Whisky, ales and home bar signs with a Highland twist. The perfect pub at home.</p>
+            <span class="btn btn-primary btn-sm">Explore →</span>
+          </div>
+        </a>
+        <a href="personalised.html" class="collection-card">
+          <img src="https://picsum.photos/seed/rustic-farmhouse-kitchen/600/400" alt="Personalised signs collection" loading="lazy">
+          <div class="collection-card-overlay"></div>
+          <div class="collection-card-body">
+            <span class="eyebrow" style="color:var(--amber-lt);">Your Words</span>
+            <h3>Personalised</h3>
+            <p>Add a name, date or message. Every sign made to order, every one unique.</p>
+            <span class="btn btn-primary btn-sm">Design Yours →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BESTSELLERS ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Customer Favourites</span>
+        <h2>Bestselling Signs</h2>
+        <p>The ones our customers keep coming back for.</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="grid-4">
+
+        <div class="product-card" data-product-id="hcs-001" data-name="Highland Cow A4 Metal Sign" data-price="14.99" data-category="metal" data-order="1" data-reveal>
+          <div class="product-card-img">
+            <img src="https://picsum.photos/seed/highland-cow-product-1/500/500" alt="Highland Cow A4 Metal Wall Sign" loading="lazy">
+            <span class="product-badge">Bestseller</span>
+            <button class="product-card-quick" data-add-cart="hcs-001" data-name="Highland Cow A4 Metal Sign" data-price="14.99">Add to Bag</button>
+          </div>
+          <div class="product-card-body">
+            <h4>Highland Cow A4 Metal Wall Sign</h4>
+            <div class="product-stars">★★★★★ <span>(148 reviews)</span></div>
+            <div class="product-price">£14.99</div>
+          </div>
+        </div>
+
+        <div class="product-card" data-product-id="hcs-002" data-name="Braw Wee Home Wooden Sign" data-price="22.99" data-category="wood" data-order="2" data-reveal data-reveal-delay="1">
+          <div class="product-card-img">
+            <img src="https://picsum.photos/seed/rustic-wooden-sign-2/500/500" alt="Braw Wee Home Wooden Sign" loading="lazy">
+            <span class="product-badge new">New</span>
+            <button class="product-card-quick" data-add-cart="hcs-002" data-name="Braw Wee Home Wooden Sign" data-price="22.99">Add to Bag</button>
+          </div>
+          <div class="product-card-body">
+            <h4>Braw Wee Home Wooden Sign</h4>
+            <div class="product-stars">★★★★★ <span>(93 reviews)</span></div>
+            <div class="product-price">£22.99</div>
+          </div>
+        </div>
+
+        <div class="product-card" data-product-id="hcs-003" data-name="Personalised Welcome Sign" data-price="24.99" data-category="personalised" data-order="3" data-reveal data-reveal-delay="2">
+          <div class="product-card-img">
+            <img src="https://picsum.photos/seed/personalised-welcome-sign/500/500" alt="Personalised Welcome Sign" loading="lazy">
+            <span class="product-badge custom">Personalised</span>
+            <button class="product-card-quick" data-add-cart="hcs-003" data-name="Personalised Welcome Sign" data-price="24.99">Add to Bag</button>
+          </div>
+          <div class="product-card-body">
+            <h4>Personalised Welcome to Our Home Sign</h4>
+            <div class="product-stars">★★★★★ <span>(212 reviews)</span></div>
+            <div class="product-price">£24.99</div>
+          </div>
+        </div>
+
+        <div class="product-card" data-product-id="hcs-004" data-name="Highland Gift Set" data-price="34.99" data-category="gifts" data-order="4" data-reveal data-reveal-delay="3">
+          <div class="product-card-img">
+            <img src="https://picsum.photos/seed/highland-gift-set/500/500" alt="Highland Cow Gift Set — Mug, Coasters & Sign" loading="lazy">
+            <span class="product-badge">Gift Set</span>
+            <button class="product-card-quick" data-add-cart="hcs-004" data-name="Highland Gift Set" data-price="34.99">Add to Bag</button>
+          </div>
+          <div class="product-card-body">
+            <h4>Highland Cow Gift Set — Sign, Mug &amp; Coasters</h4>
+            <div class="product-stars">★★★★★ <span>(67 reviews)</span></div>
+            <div class="product-price">£34.99</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top: var(--s7);" data-reveal>
+        <a href="collections.html" class="btn btn-dark btn-lg">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PERSONALISED CTA ═══ -->
+  <section class="personalised-cta grain" style="position:relative;">
+    <div class="container">
+      <div data-reveal>
+        <span class="eyebrow">Made Just for You</span>
+        <h2>A Sign as Unique<br>as <em>Your Story</em></h2>
+        <p>Name, date, a favourite phrase — we hand-craft personalised signs on the same quality steel and wood as our full collection. Despatched within 3–5 working days.</p>
+        <a href="personalised.html" class="btn btn-primary btn-lg">Start Designing</a>
+      </div>
+      <div data-reveal data-reveal-delay="2">
+        <div class="sign-preview-demo">
+          <div class="label" style="margin-bottom: var(--s3); color: var(--bark);">Example Sign</div>
+          <h3>The Mackenzie Family</h3>
+          <p style="margin:0; font-style:italic; color: var(--bark-lt);">Est. 1987 &nbsp;·&nbsp; Skye, Scotland</p>
+          <div style="margin-top: var(--s4); font-size: 1.4rem; color: var(--amber);">⧫ ⧫ ⧫</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRADE ═══ -->
+  <section class="trade-section grain" style="position:relative;">
+    <div class="container">
+      <div class="trade-content" data-reveal>
+        <span class="eyebrow">Wholesale &amp; Trade</span>
+        <h2>Stock the Signs<br>Your Customers Love</h2>
+        <p>From Edinburgh gift shops to Yorkshire farm shops, our trade stockists love how quickly our Highland Cow range sells through. Easy ordering, fast delivery, and margins that work.</p>
+        <ul class="trade-list">
+          <li>50% trade discount off RRP</li>
+          <li>MOQ from just £100</li>
+          <li>POS stands, catalogues &amp; imagery supplied</li>
+          <li>Net 30 payment terms available</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a href="about.html#trade" class="btn btn-primary">Apply for a Trade Account</a>
+      </div>
+      <div class="trade-img" data-reveal data-reveal-delay="2">
+        <img src="https://picsum.photos/seed/gift-shop-interior-rustic/700/525" alt="Highland Cow Signs displayed in a gift shop" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REVIEWS ═══ -->
+  <section class="reviews-section section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">What Our Customers Say</span>
+        <h2>Loved Across the Land</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="grid-3">
+
+        <div class="review-card" data-reveal>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The metal sign is stunning — proper solid steel, not the flimsy stuff you get elsewhere. The Highland Cow illustration is absolutely gorgeous and it's pride of place in our kitchen."</p>
+          <div class="review-author">
+            <div class="review-avatar">SM</div>
+            <div>
+              <div class="review-name">Sarah M.</div>
+              <div class="review-location">Edinburgh, Scotland</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-reveal data-reveal-delay="1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ordered the personalised sign for my mum's new house. She cried happy tears. Packaged beautifully, arrived quickly, and the quality is miles ahead of anything I found on Etsy."</p>
+          <div class="review-author">
+            <div class="review-avatar">JT</div>
+            <div>
+              <div class="review-name">James T.</div>
+              <div class="review-location">Glasgow, Scotland</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-reveal data-reveal-delay="2">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We stock these in our farm shop and the Highland Cow signs fly off the shelves. Our customers absolutely love them — reordering every 6 weeks now. Brilliant trade service."</p>
+          <div class="review-author">
+            <div class="review-avatar">FR</div>
+            <div>
+              <div class="review-name">Fiona R.</div>
+              <div class="review-location">Perthshire · Trade Stockist</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEWSLETTER ═══ -->
+  <div class="newsletter">
+    <div class="container">
+      <div class="newsletter-text" data-reveal>
+        <h3>Get Highland News</h3>
+        <p>New collections, behind-the-scenes and exclusive offers — direct to your inbox.</p>
+      </div>
+      <form class="newsletter-form" data-reveal data-reveal-delay="1">
+        <input type="email" placeholder="your@email.co.uk" required aria-label="Email address">
+        <button type="submit" class="btn btn-dark">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <div class="logo-mark"><svg viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/><ellipse cx="9" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><ellipse cx="14" cy="16" rx="5" ry="4" fill="#EBE0C8"/><path d="M10 11 Q11 8 12 9 Q13 6 14 9 Q15 7 16 9 Q17 8 18 11" stroke="#C8B490" stroke-width="1.2" stroke-linecap="round" fill="none"/><circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/><circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/><ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/><path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
+            <div class="logo-text"><span class="logo-name">Highland Cow Signs Co.</span><span class="logo-tagline">Scottish Signs & Gifts</span></div>
+          </a>
+          <p>Scottish-designed decorative signs and gifts, handcrafted for homes that tell a story.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Facebook">👥</a>
+            <a href="#" aria-label="Pinterest">📌</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="collections.html">All Products</a></li>
+            <li><a href="collections.html?cat=metal">Metal Wall Signs</a></li>
+            <li><a href="collections.html?cat=wood">Wooden Signs</a></li>
+            <li><a href="personalised.html">Personalised Signs</a></li>
+            <li><a href="collections.html?cat=gifts">Gift Sets</a></li>
+            <li><a href="collections.html?cat=mugs">Mugs & Coasters</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="about.html#faqs">FAQs</a></li>
+            <li><a href="about.html#delivery">Delivery &amp; Returns</a></li>
+            <li><a href="about.html#trade">Trade Accounts</a></li>
+            <li><a href="about.html#contact">Contact Us</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <div class="footer-contact">
+            <strong>Email</strong>
+            hello@highlandcowsigns.co.uk<br><br>
+            <strong>Phone</strong>
+            01XXX XXXXXX<br><br>
+            <strong>Hours</strong>
+            Mon–Fri, 9am–5pm
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Highland Cow Signs Co. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

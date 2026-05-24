@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Design your own personalised Highland Cow sign — add your name, family name, date or message. Live preview, made to order.">
+  <title>Personalised Signs | Highland Cow Signs Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .format-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .format-card {
+      border:2px solid var(--border-lt);
+      border-radius:var(--r2);
+      padding:16px;
+      cursor:pointer;
+      transition:border-color .2s, background .2s;
+      text-align:center;
+    }
+    .format-card:hover  { border-color:var(--bark-lt); }
+    .format-card.active { border-color:var(--rust); background:var(--parchment); }
+    .format-card .icon  { font-size:1.8rem; display:block; margin-bottom:8px; }
+    .format-card h5     { font-size:.85rem; font-weight:700; margin-bottom:4px; color:var(--forest); }
+    .format-card p      { font-size:.75rem; color:var(--stone); margin:0; }
+    .sign-preview-wrap  { background:var(--bark); border-radius:var(--r2); padding:40px 28px; min-height:460px; display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; }
+    .preview-label      { font-size:.72rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(244,237,216,.5); }
+    .sign-canvas        { width:100%; max-width:340px; }
+    /* Style A — aged parchment */
+    .style-a { background:var(--vellum); border:4px solid var(--amber); }
+    .style-a .sign-canvas-line1 { color:var(--forest); }
+    .style-a .sign-canvas-line2 { color:var(--bark-lt); }
+    /* Style B — dark forest */
+    .style-b { background:var(--forest); border:4px solid var(--amber-lt); }
+    .style-b .sign-canvas-line1 { color:var(--parchment); }
+    .style-b .sign-canvas-line2 { color:rgba(235,224,200,.7); }
+    .style-b::before { border-color:rgba(232,150,58,.2) !important; }
+    /* Style C — dark rust */
+    .style-c { background:var(--rust); border:4px solid var(--vellum); }
+    .style-c .sign-canvas-line1 { color:var(--white); }
+    .style-c .sign-canvas-line2 { color:rgba(255,255,255,.75); }
+    .style-c::before { border-color:rgba(255,255,255,.2) !important; }
+    .price-summary { background:var(--parchment); border:1px solid var(--border); border-radius:var(--r2); padding:20px; margin-top:8px; }
+    .price-row { display:flex; justify-content:space-between; font-size:.9rem; padding:6px 0; border-bottom:1px solid var(--border-lt); }
+    .price-row:last-child { border:none; font-weight:700; font-size:1rem; color:var(--rust); padding-top:10px; }
+  </style>
+</head>
+<body>
+
+  <div class="announcement">
+    🏴󠁧󠁢󠁳󠁣󠁴󠁿 All personalised signs despatched within 3–5 working days &nbsp;·&nbsp; Free UK delivery over £35
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <div class="logo-mark">
+          <svg viewBox="0 0 28 28" fill="none">
+            <ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/>
+            <ellipse cx="9"  cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/>
+            <ellipse cx="14" cy="16" rx="5"   ry="4"   fill="#EBE0C8"/>
+            <path d="M10 11 Q11 8 12 9 Q13 6 14 9 Q15 7 16 9 Q17 8 18 11" stroke="#C8B490" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/>
+            <circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/>
+            <ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/>
+            <path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Highland Cow Signs Co.</span>
+          <span class="logo-tagline">Scottish Signs &amp; Gifts</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="primary-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html">Shop</a></li>
+          <li><a href="personalised.html" class="active">Personalised</a></li>
+          <li><a href="about.html#trade">Trade</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn" id="cart-btn" aria-label="Bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="collections.html">Shop All</a>
+      <a href="personalised.html">Personalised Signs</a>
+      <a href="about.html#trade">Trade Accounts</a>
+      <a href="about.html">About &amp; Contact</a>
+    </nav>
+  </div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button class="icon-btn cart-close" onclick="closeDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div id="cart-footer"></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <!-- 📸 PHOTO SLOT 6: Rustic farmhouse interior or lifestyle with signs on wall -->
+    <div class="page-hero-bg" style="background-image:url('https://picsum.photos/seed/rustic-farmhouse-interior/1400/500');"></div>
+    <div class="container">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span style="color:rgba(235,224,200,.8)">Personalised Signs</span></nav>
+      <h1>Your Sign. Your Story.</h1>
+      <p>Type your text, watch it come to life in real time, and we'll craft it onto quality steel or wood — just for you.</p>
+    </div>
+  </div>
+
+  <!-- BUILDER -->
+  <section class="section">
+    <div class="container">
+      <div class="builder-layout">
+
+        <!-- STEPS -->
+        <div class="builder-steps">
+          <h2 style="margin-bottom:var(--s5);">Design Your Sign</h2>
+
+          <!-- STEP 1: FORMAT -->
+          <div class="builder-step">
+            <div class="step-num">1</div>
+            <h4>Choose your format</h4>
+            <div class="format-cards">
+              <div class="format-card active" onclick="selectFormat(this,'metal','Metal Sign','19.99')">
+                <span class="icon">🪙</span>
+                <h5>Metal Sign</h5>
+                <p>From £19.99</p>
+              </div>
+              <div class="format-card" onclick="selectFormat(this,'wood','Wooden Sign','24.99')">
+                <span class="icon">🪵</span>
+                <h5>Wooden Sign</h5>
+                <p>From £24.99</p>
+              </div>
+              <div class="format-card" onclick="selectFormat(this,'pub','Pub Sign','29.99')">
+                <span class="icon">🍺</span>
+                <h5>Pub Sign</h5>
+                <p>From £29.99</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: SIZE -->
+          <div class="builder-step">
+            <div class="step-num">2</div>
+            <h4>Choose your size</h4>
+            <div class="size-options">
+              <button class="size-btn">A5 · £19.99</button>
+              <button class="size-btn active">A4 · £24.99</button>
+              <button class="size-btn">A3 · £29.99</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: STYLE -->
+          <div class="builder-step">
+            <div class="step-num">3</div>
+            <h4>Choose your style</h4>
+            <div class="style-swatches">
+              <div class="style-swatch active" style="background:var(--vellum); border:2px solid var(--amber);" data-bg="var(--vellum)" data-border="var(--amber)" data-style="style-a" title="Aged Parchment"></div>
+              <div class="style-swatch" style="background:var(--forest); border:2px solid transparent;" data-bg="var(--forest)" data-border="var(--amber-lt)" data-style="style-b" title="Dark Forest"></div>
+              <div class="style-swatch" style="background:var(--rust); border:2px solid transparent;" data-bg="var(--rust)" data-border="var(--vellum)" data-style="style-c" title="Highland Rust"></div>
+              <div class="style-swatch" style="background:var(--bark); border:2px solid transparent;" data-bg="var(--bark)" data-border="var(--amber)" data-style="style-a" title="Dark Bark"></div>
+              <div class="style-swatch" style="background:var(--peat); border:2px solid transparent;" data-bg="var(--peat)" data-border="var(--amber-lt)" data-style="style-b" title="Peat Black"></div>
+            </div>
+          </div>
+
+          <!-- STEP 4: TEXT -->
+          <div class="builder-step">
+            <div class="step-num">4</div>
+            <h4>Add your text</h4>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div>
+                <label style="display:block; font-size:.75rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--stone); margin-bottom:6px;">Main line (name, family name, phrase)</label>
+                <input type="text" id="preview-line1" placeholder="e.g. The MacKenzie Family" maxlength="40">
+              </div>
+              <div>
+                <label style="display:block; font-size:.75rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--stone); margin-bottom:6px;">Second line (date, location, motto)</label>
+                <input type="text" id="preview-line2" placeholder="e.g. Est. 1987 · Skye, Scotland" maxlength="50">
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 5: ADD TO CART -->
+          <div class="builder-step" style="background:var(--parchment);">
+            <div class="step-num" style="background:var(--rust);">5</div>
+            <h4>Add to your bag</h4>
+            <div class="price-summary">
+              <div class="price-row"><span>Format</span><span id="format-label">Metal Sign</span></div>
+              <div class="price-row"><span>Size</span><span>A4</span></div>
+              <div class="price-row"><span>Personalisation</span><span>Included</span></div>
+              <div class="price-row"><span>Total</span><span id="price-display">£24.99</span></div>
+            </div>
+            <button class="btn btn-primary btn-block btn-lg" style="margin-top:16px;"
+              id="personalised-atc"
+              data-add-cart="hcs-p001"
+              data-name="Personalised Sign"
+              data-price="24.99">
+              Add to Bag — <span id="price-btn">£24.99</span>
+            </button>
+            <p style="font-size:.78rem; color:var(--stone); text-align:center; margin-top:10px;">Made to order · Despatched within 3–5 working days</p>
+          </div>
+        </div>
+
+        <!-- LIVE PREVIEW -->
+        <div>
+          <h3 style="margin-bottom:var(--s4); color:var(--forest);">Live Preview</h3>
+          <div class="sign-preview-wrap">
+            <span class="preview-label">Your sign will look something like this</span>
+            <div class="sign-canvas style-a" id="sign-preview-canvas">
+              <div class="sign-canvas-line1" id="sign-line1">Your Name Here</div>
+              <div style="color:var(--amber); font-size:1.2rem; margin:10px 0;">⧫ ⧫ ⧫</div>
+              <div class="sign-canvas-line2" id="sign-line2">Est. 2024</div>
+            </div>
+            <span class="preview-label">Placeholder preview — final sign will be fully designed</span>
+          </div>
+
+          <!-- Trust signals -->
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px;">
+            <div style="display:flex; align-items:center; gap:12px; padding:14px; background:var(--white); border:1px solid var(--border-lt); border-radius:var(--r2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:22px;height:22px;color:var(--rust);flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068"/></svg>
+              <div>
+                <div style="font-weight:600;font-size:.88rem;">We proof every personalised order</div>
+                <div style="font-size:.78rem;color:var(--stone);">We'll send you a digital proof before we print — no surprises.</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; padding:14px; background:var(--white); border:1px solid var(--border-lt); border-radius:var(--r2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:22px;height:22px;color:var(--rust);flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+              <div>
+                <div style="font-weight:600;font-size:.88rem;">Made with love, sent with care</div>
+                <div style="font-size:.78rem;color:var(--stone);">Every sign is individually packaged in protective wrapping with a personal note.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONALISED EXAMPLES -->
+  <section class="section" style="background:var(--parchment);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">Customer Creations</span>
+        <h2>Personalised Signs We've Made</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="grid-3">
+        <div class="product-card" data-reveal>
+          <div class="product-card-img">
+            <!-- 📸 PHOTO SLOT 7: Personalised sign in lifestyle/home setting -->
+            <img src="https://picsum.photos/seed/hc-personalised-1/500/500" alt="The Robertson Family personalised sign" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <h4>"The Robertson Family · Est. 1994"</h4>
+            <div class="product-stars">★★★★★</div>
+            <div class="product-price">£24.99 · A4 Metal</div>
+          </div>
+        </div>
+        <div class="product-card" data-reveal data-reveal-delay="1">
+          <div class="product-card-img">
+            <!-- 📸 PHOTO SLOT 8: Personalised wooden sign lifestyle -->
+            <img src="https://picsum.photos/seed/hc-personalised-2/500/500" alt="Haste Ye Back personalised wooden sign" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <h4>"Haste Ye Back · Glen Affric Cottage"</h4>
+            <div class="product-stars">★★★★★</div>
+            <div class="product-price">£29.99 · A4 Wood</div>
+          </div>
+        </div>
+        <div class="product-card" data-reveal data-reveal-delay="2">
+          <div class="product-card-img">
+            <img src="https://picsum.photos/seed/hc-personalised-3/500/500" alt="The Wee Dram personalised pub sign" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <h4>"The Wee Dram · McAllister's Bar Since 1987"</h4>
+            <div class="product-stars">★★★★★</div>
+            <div class="product-price">£34.99 · A3 Metal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="newsletter">
+    <div class="container">
+      <div class="newsletter-text"><h3>Get Highland News</h3><p>New collections and exclusive offers to your inbox.</p></div>
+      <form class="newsletter-form"><input type="email" placeholder="your@email.co.uk" required><button type="submit" class="btn btn-dark">Subscribe</button></form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">
+            <div class="logo-mark"><svg viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="17" rx="8" ry="6" fill="#F4EDD8"/><ellipse cx="9" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><ellipse cx="19" cy="13" rx="3.5" ry="4.5" fill="#F4EDD8"/><circle cx="11.5" cy="14" r="1" fill="#2F4A2F"/><circle cx="16.5" cy="14" r="1" fill="#2F4A2F"/><ellipse cx="14" cy="17.5" rx="2" ry="1.2" fill="#C8B490"/><path d="M10 11 Q7 8 6 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M18 11 Q21 8 22 6" stroke="#EBE0C8" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
+            <div class="logo-text"><span class="logo-name">Highland Cow Signs Co.</span><span class="logo-tagline">Scottish Signs &amp; Gifts</span></div>
+          </a>
+          <p>Scottish-designed decorative signs and gifts, handcrafted for homes that tell a story.</p>
+          <div class="footer-social"><a href="#">📸</a><a href="#">👥</a><a href="#">📌</a><a href="#">🎵</a></div>
+        </div>
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="collections.html">All Products</a></li><li><a href="personalised.html">Personalised Signs</a></li><li><a href="about.html#trade">Trade Accounts</a></li></ul></div>
+        <div class="footer-col"><h4>Help</h4><ul><li><a href="about.html#faqs">FAQs</a></li><li><a href="about.html#delivery">Delivery &amp; Returns</a></li><li><a href="about.html#contact">Contact Us</a></li></ul></div>
+        <div class="footer-col"><h4>Get in Touch</h4><div class="footer-contact"><strong>Email</strong> hello@highlandcowsigns.co.uk<br><br><strong>Phone</strong> 01XXX XXXXXX</div></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Highland Cow Signs Co.</span><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Format selector
+    function selectFormat(el, type, label, price) {
+      document.querySelectorAll('.format-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('format-label').textContent = label;
+      document.getElementById('price-display').textContent = '£' + price;
+      document.getElementById('price-btn').textContent = '£' + price;
+      document.getElementById('personalised-atc').dataset.price = price;
+    }
+
+    // Style swatch updates the canvas class
+    document.querySelectorAll('.style-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        document.querySelectorAll('.style-swatch').forEach(s => s.classList.remove('active'));
+        swatch.classList.add('active');
+        const canvas = document.getElementById('sign-preview-canvas');
+        canvas.className = 'sign-canvas ' + (swatch.dataset.style || 'style-a');
+      });
+    });
+  </script>
+</body>
+</html>
